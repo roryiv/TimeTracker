@@ -1,1 +1,32 @@
-<h2>ENTRIES view</h2>
+<form ng-submit="vm.timer()">
+    <div flex-layout="row">
+
+        <md-input-container>
+            <label>What did you do?</label>
+            <input ng-model="vm.newEntry.action">
+        </md-input-container>
+
+        <div flayout="row" layout-align="space-between center">
+            <span flex-gt-xs>What is your favorite weapon?</span>
+            <md-select ng-model="weapon" placeholder="Weapon" class="md-no-underline">
+                <md-option value="axe">Axe</md-option>
+                <md-option value="sword">Sword</md-option>
+                <md-option value="wand">Wand</md-option>
+                <md-option value="pen">Pen?</md-option>
+            </md-select>
+            <div flex-gt-xs>
+                <md-datepicker ng-model="vm.startTime" md-placeholder="start date"></md-datepicker>
+                <md-input-container>
+                    <input type="time" ng-model="vm.startTime">
+                </md-input-container>
+            </div>
+            <div flex-gt-xs>
+                <md-datepicker ng-model="vm.endTime" md-placeholder="end date"></md-datepicker>
+                <md-input-container>
+                    <input type="time" ng-model="vm.endTime">
+                </md-input-container>
+            </div>
+            <div flex-gt-xs>
+                <md-button type="submit">Submit</md-button>
+            </div>
+</form>
