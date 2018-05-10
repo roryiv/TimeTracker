@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ProductivityIntervalLogger</title>
+    <!-- angular and angular route -->
+    <script src="vendors/angular.min.js"></script>
+    <script src="vendors/angular-route.min.js"></script>
+
+    <!-- angular material -->
+    <script src="vendors/angular-animate.min.js"></script>
+    <script src="vendors/angular-aria.min.js"></script>
+    <script src="vendors/angular-messages.min.js"></script>
+    <link rel="stylesheet" href="vendors/angular-material.min.css">
+    <script src="vendors/angular-material.min.js"></script>
+
+    <!-- custom styles -->
+    <link rel="stylesheet" href="styles/style.css">
+
+    <!-- client -->
+    <script src="scripts/client.js"></script>
+    <script src="scripts/services/project.service.js"></script>
+    <script src="scripts/controllers/entry.controller.js"></script>
+    <script src="scripts/controllers/projects.controller.js"></script>
+</head>
+<body ng-app="ProjectApp">
+    <div id="navigation">
+        <a href="#!/">ENTRIES</a>
+        <a href="#!/projects">PROJECTS</a>
+    </div>
+    <h1>Timelord</h1>
+    <ng-view>
+        <!-- ng-content -->
+    </ng-view>
+</body>
+</html>
