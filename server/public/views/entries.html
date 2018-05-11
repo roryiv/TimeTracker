@@ -1,32 +1,36 @@
-<form ng-submit="vm.timer()">
+<form ng-submit="vm.addEntry()">
     <div flex-layout="row">
 
         <md-input-container>
-            <label>What did you do?</label>
+            <label>Task Description</label>
             <input ng-model="vm.newEntry.action">
         </md-input-container>
 
         <div flayout="row" layout-align="space-between center">
-            <span flex-gt-xs>What is your favorite weapon?</span>
-            <md-select ng-model="weapon" placeholder="Weapon" class="md-no-underline">
-                <md-option value="axe">Axe</md-option>
-                <md-option value="sword">Sword</md-option>
-                <md-option value="wand">Wand</md-option>
-                <md-option value="pen">Pen?</md-option>
+            <!-- <span flex-gt-xs>Project</span> -->
+            <md-select ng-model="vm.newEntry.project_id" placeholder="Project" class="md-no-underline">
+                <md-option ng-repeat="project in vm.projects.list" value="{{project.id}}">{{project.name}}</md-option>
             </md-select>
             <div flex-gt-xs>
-                <md-datepicker ng-model="vm.startTime" md-placeholder="start date"></md-datepicker>
+                <md-datepicker ng-model="vm.dates.startDate" md-placeholder="start date"></md-datepicker>
                 <md-input-container>
-                    <input type="time" ng-model="vm.startTime">
+                    <input type="time" ng-model="vm.dates.startDate" aria-label="start time">
                 </md-input-container>
             </div>
             <div flex-gt-xs>
-                <md-datepicker ng-model="vm.endTime" md-placeholder="end date"></md-datepicker>
+                <md-datepicker ng-model="vm.dates.endDate" md-placeholder="end date"></md-datepicker>
                 <md-input-container>
-                    <input type="time" ng-model="vm.endTime">
+                    <input type="time" ng-model="vm.dates.endDate" aria-label="end time">
                 </md-input-container>
             </div>
             <div flex-gt-xs>
                 <md-button type="submit">Submit</md-button>
             </div>
+
+
 </form>
+<div>
+
+    <p>{{vm.newEntry}}</p>
+    <p>{{vm.dates}}</p>
+</div>

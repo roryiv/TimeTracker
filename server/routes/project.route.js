@@ -2,10 +2,10 @@ const router = require('express').Router();
 const pool = require('../modules/database');
 
 router.get('/', (req, res) => {
-    pool.query(`SELECT "name", COALESCE(SUM(entries."duration"), 0) AS "total_hours"
-    FROM entries
-    RIGHT JOIN projects ON entries."project_id" = projects."id"
-    GROUP BY "name";`)
+    pool.query(`SELECT projects."id", "name", COALESCE(SUM(entries."duration"), 0) AS "total_hours"
+    FROM projects
+    LEFT JOIN entries ON entries."project_id" = projects."id"
+    GROUP BY projects."id";`)
     .then((results) => {
         res.send(results.rows);
     })
