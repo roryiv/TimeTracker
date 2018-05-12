@@ -15,7 +15,7 @@ app.service('ProjectService', ['$http', function ($http) {
     self.dates = {
         startDate: new Date(),
         endDate: new Date()
-    }
+    };
 
     self.getEntries = function () {
         $http({
@@ -50,20 +50,20 @@ app.service('ProjectService', ['$http', function ($http) {
         self.newEntry.start = self.makeDateString(self.dates.startDate);
         self.newEntry.end = self.makeDateString(self.dates.endDate);
 
-            $http({
-                method: 'POST',
-                url: '/time',
-                data: self.newEntry
+        $http({
+            method: 'POST',
+            url: '/time',
+            data: self.newEntry
+        })
+            .then(function (response) {
+                console.log('server response to entry post', response.statusText);
+                alert('Entry recorded!');
+                self.getEntries();
+                self.resetForm();
             })
-                .then(function (response) {
-                    console.log('server response to entry post', response.statusText);
-                    alert('Entry recorded!');
-                    self.getEntries();
-                    self.resetForm();
-                })
-                .catch(function (error) {
-                    console.log('entry post error', error);
-                });
+            .catch(function (error) {
+                console.log('entry post error', error);
+            });
     }
 
     self.addProject = function () {
@@ -118,7 +118,7 @@ app.service('ProjectService', ['$http', function ($http) {
     }
 
     self.makeDateString = function (date) {
-        return date.getFullYear() + '-' + (date.getMonth()+1) + '-' + date.getDate() + ' ' +
+        return date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() + ' ' +
             date.getHours() + ':' + date.getMinutes();
     }
 

@@ -1,13 +1,13 @@
 <form ng-submit="vm.addEntry()">
     <div flex-layout="row">
 
-        <md-input-container>
-            <label>Task Description</label>
-            <input ng-model="vm.newEntry.action">
-        </md-input-container>
+        
 
         <div flayout="row" layout-align="space-between center">
-            <!-- <span flex-gt-xs>Project</span> -->
+                <md-input-container>
+                        <label>Task Description</label>
+                        <input ng-model="vm.newEntry.action">
+                    </md-input-container>
             <md-select ng-model="vm.newEntry.project_id" placeholder="Project" class="md-no-underline">
                 <md-option ng-repeat="project in vm.projects.list" value="{{project.id}}">{{project.name}}</md-option>
             </md-select>
@@ -33,4 +33,6 @@
 
     <p>{{vm.newEntry}}</p>
     <p>{{vm.dates}}</p>
+    <p>{{vm.entries}}</p>
+    <p>{{vm.projects}}</p>
 </div>
