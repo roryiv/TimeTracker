@@ -1,4 +1,5 @@
-<md-card flex=60>
+
+<md-card flex=80>
     <md-card-title>
         <h3>Add Project</h3>
     </md-card-title>
@@ -13,20 +14,22 @@
     </md-card-content>
 </md-card>
 
-<h3>All Projects</h3>
-<table>
-    <thead>
-        <th>Project Name</th>
-        <th>Total Hours</th>
-        <th>Edit</th>
-    </thead>
-    <tbody>
-        <tr ng-repeat="project in vm.projects.list">
-            <td>{{project.name}}</td>
-            <td>{{project.total_hours}}</td>
-            <td>
-                <md-button ng-click="vm.deleteProject(project)">Delete</button>
-            </td>
-        </tr>
-    </tbody>
-</table>
+<div layout-padding layout-margin>
+        <h3>All Projects</h3>
+        <table style="width: 80%">
+            <thead>
+                <th>Project Name</th>
+                <th>Total Hours</th>
+                <th>Actions</th>
+            </thead>
+            <tbody>
+                <tr ng-repeat="project in vm.projects.list">
+                    <td>{{project.name}}</td>
+                    <td>{{project.total_hours}}</td>
+                    <td>
+                        <md-button ng-click="vm.deleteProject(project)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</div>

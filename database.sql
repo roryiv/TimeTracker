@@ -11,3 +11,7 @@ CREATE TABLE entries(
 "duration" NUMERIC,
 "project_id" INT REFERENCES projects
 );
+
+ALTER TABLE "public"."entries"
+  DROP CONSTRAINT "entries_project_id_fkey",
+  ADD CONSTRAINT "entries_project_id_fkey" FOREIGN KEY ("project_id") REFERENCES "public"."projects"("id") ON DELETE CASCADE;

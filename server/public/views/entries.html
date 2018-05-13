@@ -1,4 +1,4 @@
-<md-card flex="60">
+<md-card flex="80">
     <md-card-title>
         <h3>Add Entry</h3>
     </md-card-title>
@@ -37,16 +37,17 @@
     </md-card-content>
 </md-card>
 
-<h3>History</h3>
-<div>
+
+<div layout-padding layout-margin>
+        <h3>History</h3>
     {{vm.entries.list[0].start.getTime()}}
-    <table>
+    <table style="width: 80%">
         <thead>
             <th>Entry</th>
             <th>Project</th>
             <th>Date</th>
             <th>Hours</th>
-            <th>Edit/Delete</th>
+            <th>Actions</th>
         </thead>
         <tbody>
             <tr ng-repeat="entry in vm.entries.list">
