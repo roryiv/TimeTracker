@@ -99,6 +99,7 @@ app.service('ProjectService', ['$http', function ($http) {
     }
 
     self.deleteProject = function (unwantedProject) {
+        console.log(unwantedProject);
         $http({
             method: 'DELETE',
             url: '/project',

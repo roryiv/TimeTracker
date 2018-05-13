@@ -1,5 +1,19 @@
-<h2>PROJECTS view</h2>
+<md-card flex=60>
+    <md-card-title>
+        <h3>Add Project</h3>
+    </md-card-title>
+    <md-card-content flex-layout="row">
+        <form ng-submit="vm.addProject()">
+            <md-input-container class="md-block" flex-gt-xs>
+                <label>Project Name</label>
+                <input ng-model="vm.newProject.name" />
+            </md-input-container>
+            <md-button type="submit">Create</md-button>
+        </form>
+    </md-card-content>
+</md-card>
 
+<h3>All Projects</h3>
 <table>
     <thead>
         <th>Project Name</th>
