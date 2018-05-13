@@ -1,38 +1,63 @@
-<form ng-submit="vm.addEntry()">
-    <div flex-layout="row">
+<md-card flex="60">
+    <md-card-title>
+        <h3>Add Entry</h3>
+    </md-card-title>
+    <md-card-content flex-layout="row">
+        <form ng-submit="vm.addEntry()">
+            <md-input-container class="md-block" flex-gt-xs>
+                <label>What You Did</label>
+                <input ng-model="vm.newEntry.action" />
+            </md-input-container>
+            <md-input-container>
+                <label>Project</label>
+                <md-select ng-model="vm.newEntry.project_id">
+                    <md-option ng-repeat="project in vm.projects.list" value="{{project.id}}">
+                        {{project.name}}
+                    </md-option>
+                </md-select>
+            </md-input-container>
+            <md-input-container>
+                <label>Start Date: </label>
+                <md-datepicker ng-model="vm.dates.startDate"></md-datepicker>
+            </md-input-container>
+            <md-input-container>
+                <label>Start Time: </label>
+                <input type="time" ng-model="vm.dates.startDate" />
+            </md-input-container>
+            <md-input-container>
+                <label>Stop Date:</label>
+                <md-datepicker ng-model="vm.dates.endDate"></md-datepicker>
+            </md-input-container>
+            <md-input-container>
+                <label>Stop Time:</label>
+                <input type="time" ng-model="vm.dates.endDate" />
+            </md-input-container>
+            <md-button type="submit">Create</md-button>
+        </form>
+    </md-card-content>
+</md-card>
 
-        
-
-        <div flayout="row" layout-align="space-between center">
-                <md-input-container>
-                        <label>Task Description</label>
-                        <input ng-model="vm.newEntry.action">
-                    </md-input-container>
-            <md-select ng-model="vm.newEntry.project_id" placeholder="Project" class="md-no-underline">
-                <md-option ng-repeat="project in vm.projects.list" value="{{project.id}}">{{project.name}}</md-option>
-            </md-select>
-            <div flex-gt-xs>
-                <md-datepicker ng-model="vm.dates.startDate" md-placeholder="start date"></md-datepicker>
-                <md-input-container>
-                    <input type="time" ng-model="vm.dates.startDate" aria-label="start time">
-                </md-input-container>
-            </div>
-            <div flex-gt-xs>
-                <md-datepicker ng-model="vm.dates.endDate" md-placeholder="end date"></md-datepicker>
-                <md-input-container>
-                    <input type="time" ng-model="vm.dates.endDate" aria-label="end time">
-                </md-input-container>
-            </div>
-            <div flex-gt-xs>
-                <md-button type="submit">Submit</md-button>
-            </div>
-
-
-</form>
+<h3>History</h3>
 <div>
-
-    <p>{{vm.newEntry}}</p>
-    <p>{{vm.dates}}</p>
-    <p>{{vm.entries}}</p>
-    <p>{{vm.projects}}</p>
+    {{vm.entries.list[0].start.getTime()}}
+    <table>
+        <thead>
+            <th>Entry</th>
+            <th>Project</th>
+            <th>Date</th>
+            <th>Hours</th>
+            <th>Edit/Delete</th>
+        </thead>
+        <tbody>
+            <tr ng-repeat="entry in vm.entries.list">
+                <td>{{entry.action}}</td>
+                <td>{{vm.fetchProject(entry.project_id)}}</td>
+                <td>{{vm.displayDate(entry.start)}}</td>
+                <td>{{entry.duration}}</td>
+                <td>
+                    <md-button ng-click="vm.deleteEntry(entry)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>

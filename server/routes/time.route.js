@@ -2,7 +2,10 @@ const router = require('express').Router();
 const pool = require('../modules/database');
 
 router.get('/', (req, res) => {
-    pool.query(`SELECT * FROM entries;`)
+    pool.query(`SELECT "id", "action", "duration", "project_id",
+    DATE_PART('epoch',"start")*1000 AS "start", 
+    DATE_PART('epoch',"end")*1000 AS "end" 
+    FROM ENTRIES;`)
         .then((results) => {
             res.send(results.rows);
         })
